@@ -4,6 +4,7 @@ body{
     width: 100vw;
     height: 100vh;
     background-color: rgb(177, 177, 177);
+    overflow: hidden;
 }
 
 #text-wrap{
@@ -44,6 +45,8 @@ body{
     position: relative;
 }
 
+
+/*graffiti / spray*/
 #graffiti{
     opacity: 0.85;
     width: 300px;
@@ -61,13 +64,23 @@ body{
     height: 80px
 }
 
-.jump{
-    animation: jump 0.5s linear infinite;
+/*parachute*/
+#parachute{
+    width: 180px;
 }
-.bigger{
-    animation: bigger 0.5s linear infinite;
+#parachute:hover{
+    animation: spin 2s linear infinite;
+    cursor: pointer
+}
+#parachute-wrap{
+    position: relative;
+    left: 100vw;
+    z-index: 20;
+    top: -200px;
+    animation: fly 15s linear infinite;
 }
 
+/*animations*/
 @keyframes jump {
     0%   { bottom: 0; }
     50%  { bottom: 20px; }
@@ -84,11 +97,23 @@ body{
     50% { left: 220px; }
     100% { left: 200px; }
 }
+@keyframes fly {
+    from  { left: 100vw; top: -300px; }
+    to { left: -150vw; top: 130vh}
+}
 @keyframes rotate {
 	to {
 		--angle: 360deg;
 	}
 }
+@keyframes spin { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(360deg); 
+    }
+}
+
 @property --angle {
   syntax: '<angle>';
   initial-value: 0deg;
